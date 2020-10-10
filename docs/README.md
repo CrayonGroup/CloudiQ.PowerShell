@@ -10,7 +10,7 @@ Install-Module -Name CloudiQ
 Import-Module -Name CloudiQ
 ```
 
-If you need to install a certain version, you can do so by specifying by using the ```-RequiredVersion``` parameter. If you need to use the module on a machine that has no access to the internet, you can download the [latest release](https://github.com/CrayonAS/Crayon.Cloud-iQ.PowerShell/releases) add it manually to your system. 
+If you need to install a certain version, you can do so by specifying by using the ```-RequiredVersion``` parameter. If you need to use the module on a machine that has no access to the internet, you can download the [latest release](https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell/releases) add it manually to your system. 
 
 To keep the module updated, you can use:
 

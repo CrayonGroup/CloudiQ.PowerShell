@@ -13,7 +13,7 @@ else {
 }
 
 $file = @{
-    Uri = "https://github.com/CrayonAS/CloudiQ.PowerShell/archive/$branch.zip"
+    Uri     = "https://github.com/CrayonGroup/CloudiQ.PowerShell/archive/$branch.zip"
     OutFile = 'cloudiq.zip'
 }
 
