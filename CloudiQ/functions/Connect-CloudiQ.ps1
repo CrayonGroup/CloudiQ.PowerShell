@@ -1,0 +1,86 @@
+function Connect-CloudiQ {
+    <#
+    .SYNOPSIS
+
+    Connect to CloudiQ and adds API token to your session.
+
+    .DESCRIPTION
+
+    Connect to CloudiQ by using a client id and secret created in the portal, as well as your username and password.
+
+    .PARAMETER ClientId
+
+    Client Id from the portal, created under API Management
+
+    .PARAMETER ClientSecret
+
+    Client Secret from the portal, created under API Management
+
+    .INPUTS
+
+    .OUTPUTS
+
+    No output, adds API token to your current session.
+
+    .EXAMPLE
+    Connect-CloudiQ -ClientId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ClientSecret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    #>
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [string]
+        $ClientId,
+        [Parameter()]
+        [string]
+        $ClientSecret
+    )
+
+    if (Test-Path -Path 'Env:\CloudiQClientId') {
+        Set-Variable -Name ClientId -Value $Env:CloudiQClientId
+        Set-Variable -Name ClientSecret -Value $Env:CloudiQClientSecret
+    }
+    
+    $apiBaseUrl = 'https://api.crayon.com/api/v1'
+    
+    $headers = @{}
+    # $encodedClientId = [System.Web.HttpUtility]::UrlEncode($clientId) 
+    # $encodedSecret = [System.Web.HttpUtility]::UrlEncode($clientSecret) 
+    # $credentials = "$($encodedClientId):$($encodedSecret)"
+    $Bytes = [System.Text.Encoding]::UTF8.GetBytes($ClientId + ":" + $ClientSecret)
+    $EncodedText =[Convert]::ToBase64String($Bytes)
+    
+    # Check if username and password is set as environment variables. If not, ask for username and password.
+    if (Test-Path -Path 'Env:\CloudiQUsername') {
+        Set-Variable -Name Username -Value $Env:CloudiQUsername
+        Set-Variable -Name Password -Value (Convertto-SecureString -String $Env:CloudiQPassword -AsPlainText)
+    }
+    else {
+        $username = Read-Host -Prompt "Username"
+        $password = Read-Host -Prompt "Password" -AsSecureString
+    }
+
+    # Converting from SecureString, the hard way due to limitations in Windows PowerShell
+    $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+    $password = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($BSTR)
+    $Body = @{
+        'username'= $username
+        'password'= $password
+        'grant_type'="password"
+        'scope'="CustomerApi"
+    }
+    
+    $headers.Add("Authorization", "Basic "+$EncodedText)
+    $headers.Add("Content-Type", "application/x-www-form-urlencoded")
+    
+    try {
+        $OAuthReq = Invoke-RestMethod -Method Post -Uri $apiBaseUrl/connect/token/ -Body $Body -Headers $headers 
+    }
+    catch {
+        Write-Error $_.Exception.Message
+        break
+    }
+    # Add the authentication token to the variable that will be used by the other functions
+    New-Variable -Name CloudIqAccessToken -Value $OAuthReq.accesstoken -Scope Global -Force
+
+    Write-Host "Successfully connected to Cloud-iQ" -ForegroundColor Green
+}
