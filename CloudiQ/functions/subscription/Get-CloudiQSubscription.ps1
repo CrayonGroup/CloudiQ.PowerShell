@@ -28,6 +28,10 @@ function Get-CloudiQSubscription {
     Get-CloudiQSubscription
 
     .EXAMPLE
+    Get-CloudiQSubscription -Name "*E1*"
+    # Supports Wildcards
+
+    .EXAMPLE
     Get-CloudiQSubscription -OrganizationName Company
 
     .EXAMPLE
@@ -73,7 +77,7 @@ function Get-CloudiQSubscription {
             Publisher      = $_.publisher.name
             Product        = $_.Name
             ProductId      = $_.Product.Id
-            SubscriptionId = $_.Id
+            SubscriptionId = $_.EntitlementId
             Quantity       = $_.Quantity
             Organization   = $_.Organization.Name
         }

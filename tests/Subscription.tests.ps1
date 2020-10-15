@@ -26,4 +26,12 @@ Describe 'get subscription tests' {
         $subscription.quantity | Should -Be 21
         $subscription.organization | Should -Be 'Demo Customer [T1/EUR]'
     }
+
+    It 'should get subscriptions based on name' {
+        $subscriptions = Get-CloudiQSubscription -Name "*F1*"
+        $subscriptions.count | Should -Be 2
+
+        $subscription = Get-CloudiQSubscription -Name "Bad name" 
+        $subscription.count | Should -Be 0
+    }
 }
