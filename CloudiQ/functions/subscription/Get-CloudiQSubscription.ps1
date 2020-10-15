@@ -86,7 +86,7 @@ function Get-CloudiQSubscription {
         $result = $result | Where-Object -Property Product -like $Name
         # Send warning if there are no results
         if (!$result) {
-            Write-Warning ("No subscriptions found with that name. Are you sure you meant " + $Name + "?")
+            Write-Error ("No subscriptions found with that name. Are you sure you meant " + $Name + "?")
         }
     }
     return $result | Sort-Object -Property 'Product'

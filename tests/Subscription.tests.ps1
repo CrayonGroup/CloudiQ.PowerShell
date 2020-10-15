@@ -18,6 +18,10 @@ Describe 'get subscription tests' {
         $subscription.count | Should -Be 1
     }
 
+    It 'try to find a organization name that is not available' {
+        {Get-CloudiQSubscription -OrganizationName "Thing_that_should_not_be" -ErrorAction Stop} | Should -Throw
+    }
+
     It 'Should get the one subscription with ID of 12345' {
         $subscription = Get-CloudiQSubscription -SubscriptionId 12345
         $subscription.count | Should -Be 1
@@ -30,8 +34,9 @@ Describe 'get subscription tests' {
     It 'should get subscriptions based on name' {
         $subscriptions = Get-CloudiQSubscription -Name "*F1*"
         $subscriptions.count | Should -Be 2
+    }
 
-        $subscription = Get-CloudiQSubscription -Name "Bad name" 
-        $subscription.count | Should -Be 0
+    It 'try to find a subscription that is not available' {
+        {Get-CloudiQSubscription -Name "Bad name" -ErrorAction Stop} | Should -Throw
     }
 }
