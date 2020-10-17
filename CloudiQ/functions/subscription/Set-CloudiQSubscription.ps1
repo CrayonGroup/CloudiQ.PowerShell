@@ -10,10 +10,14 @@ function Set-CloudiQSubscription {
     Organization Id, to limit the subscriptions to certain organizations.
 
     .PARAMETER Add
-    
+
+    Add a number of subscriptions to the total subscription count
+
+    .PARAMETER Subtract
+
+    Subtract a number of subscriptions to the total subscription count
 
     .INPUTS
-    Requires an 
 
     .OUTPUTS
     Outputs a PSCustomObject.
@@ -43,7 +47,7 @@ function Set-CloudiQSubscription {
         [int]
         $Quantity
     )
-    $subscription = Invoke-CloudiQApiRequest -Uri ("subscriptions/$SubscriptionId/")
+    $subscription = Invoke-CloudiQApiRequest -Uri ("subscriptions/$SubscriptionId")
 
     $originalQuantity = $subscription.quantity
     
@@ -57,7 +61,12 @@ function Set-CloudiQSubscription {
         $subscription.quantity = $Quantity
     }
 
-    $APICall = Invoke-CloudiQApiRequest -Uri ("subscriptions/$SubscriptionId/") -Method 'PUT' -Body ($subscription | ConvertTo-Json)
+    $callParam = @{
+        Uri     = ("subscriptions/$SubscriptionId")
+        Method  = 'PUT'
+        Body    = ($subscription | ConvertTo-Json)
+    }
+    $APICall = Invoke-CloudiQApiRequest @callParam
 
     [PSCustomObject]@{
         Name            = $APICall.name
