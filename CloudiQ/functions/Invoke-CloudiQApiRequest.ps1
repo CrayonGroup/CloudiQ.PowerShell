@@ -7,8 +7,7 @@ function Invoke-CloudiQApiRequest {
         [Parameter(Position = 1)]
         [string]
         $Method = "Get",
-        [Parameter(Position = 2)]
-        [string]
+        [Parameter(Position = 2, ValueFromPipeline = $true)]
         $Body,
         [Parameter(Position = 3)]
         [switch]
@@ -20,12 +19,13 @@ function Invoke-CloudiQApiRequest {
             Method      = $Method
             ContentType = 'application/json'
             Headers     = @{
+                'Accept'        = 'application/json'
                 'Authorization' = "Bearer $CloudIqAccessToken"
             }
         }
         # If statement to include $Body, due to limitations in Invoke-RestMethod on Windows PowerShell.
         if ($Body) {
-            $result = Invoke-RestMethod @restSplat -Body $Body -ErrorAction Stop
+            $result = Invoke-RestMethod @restSplat -Body ($Body | ConvertTo-Json -Depth 10) -ErrorAction Stop
         }
         else {
             $result = Invoke-RestMethod @restSplat -ErrorAction Stop
@@ -33,7 +33,6 @@ function Invoke-CloudiQApiRequest {
     }
     catch {
         Write-Error $_.Exception.Message
-        Write-Warning "There are no access token set. Please run Connect-CloudiQ and log in to generate one."
         break
     }
 

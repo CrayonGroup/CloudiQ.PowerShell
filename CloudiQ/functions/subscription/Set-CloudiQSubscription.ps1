@@ -64,7 +64,7 @@ function Set-CloudiQSubscription {
     $callParam = @{
         Uri     = ("subscriptions/$SubscriptionId")
         Method  = 'PUT'
-        Body    = ($subscription | ConvertTo-Json)
+        Body    = ($subscription)
     }
     $APICall = Invoke-CloudiQApiRequest @callParam
 
