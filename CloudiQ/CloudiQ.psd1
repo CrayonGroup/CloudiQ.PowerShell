@@ -22,7 +22,7 @@
     AliasesToExport   = ''
     PrivateData       = @{
         PSData = @{
-            Prerelease   = 'alpha2.1'
+            Prerelease   = 'alpha3'
             Tags         = @("Crayon", "Cloud-iQ", "CloudiQ", "license")
             ProjectUri   = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell'
             ReleaseNotes = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell/releases'
