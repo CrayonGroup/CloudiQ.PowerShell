@@ -20,10 +20,10 @@
     CmdletsToExport   = ''
     VariablesToExport = ''
     AliasesToExport   = @(
-        'ciq'
-        'giqo'
-        'giqs'
-        'siqs'
+        'ciqc'
+        'ciqgo'
+        'ciqgs'
+        'ciqss'
     )
     PrivateData       = @{
         PSData = @{
