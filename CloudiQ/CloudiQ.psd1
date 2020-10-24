@@ -21,7 +21,9 @@
     VariablesToExport = ''
     AliasesToExport   = @(
         'ciqc'
+        # Organization
         'ciqgo'
+        # Subscription
         'ciqgs'
         'ciqss'
     )
