@@ -7,13 +7,6 @@ assignees: ''
 
 ---
 
-| Checks | Status |
-|-----------------| :--: |
-| Module Import | [ ] |
-| Pester tests | [ ] |
-| Running _Get_ functions | [ ] |
-| Running _Set_ functions | [ ] |
-
 **Describe the bug**
 A clear and concise description of what the bug is.
 

@@ -4,7 +4,6 @@ BeforeAll {
     . "$PSScriptRoot/mocks/organizations.ps1"
     . "$PSScriptRoot/mocks/subscriptions.ps1"
 }
-
 Describe 'subscription tests' {
     Context 'Get-CloudiQSubscription' {
         It 'Should result in all available subscriptions' {
@@ -55,7 +54,6 @@ Describe 'subscription tests' {
     
 #             $subscription.oldQuantity | Should -Be 21
 #             $subscription.NewQuantity | Should -Be 22
-#             Should -Invoke 'Invoke-CloudiQApiRequest'
 #         }
 #     }
 # }

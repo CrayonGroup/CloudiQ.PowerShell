@@ -19,10 +19,15 @@
     )
     CmdletsToExport   = ''
     VariablesToExport = ''
-    AliasesToExport   = ''
+    AliasesToExport   = @(
+        'ciq'
+        'giqo'
+        'giqs'
+        'siqs'
+    )
     PrivateData       = @{
         PSData = @{
-            Prerelease   = 'alpha3'
+            Prerelease   = 'alpha4'
             Tags         = @("Crayon", "Cloud-iQ", "CloudiQ", "license")
             ProjectUri   = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell'
             ReleaseNotes = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell/releases'

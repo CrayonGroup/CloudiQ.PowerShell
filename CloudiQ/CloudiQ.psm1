@@ -11,3 +11,9 @@ foreach ($function in $functionTypes) {
         . ($PSScriptRoot + "/functions" + $function + $_)
     }
 }
+
+# Setting alias #
+New-Alias -Name 'ciq' -Value 'Connect-CloudiQ' -Description 'Connect to Cloud-iQ'
+New-Alias -Name 'giqo' -Value 'Get-CloudiQOrganization' -Description 'Get organizations'
+New-Alias -Name 'giqs' -Value 'Get-CloudiQSubscription' -Description 'Get subscriptions'
+New-Alias -Name 'siqs' -Value 'Set-CloudiQSubscription' -Description 'Update subscription'

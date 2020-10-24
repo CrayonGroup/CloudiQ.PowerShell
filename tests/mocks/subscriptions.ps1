@@ -92,12 +92,11 @@ Mock Invoke-CloudiQApiRequest {
     }
 } -ParameterFilter { $Uri -Eq 'subscriptions/12345' }
 # Mock a spesific response for updating subscription count
-# TODO: Having issues with nested filters.
-# Mock Invoke-CloudiQApiRequest {
-#     [PSCustomObject]@{
-#         Name            = 'Microsoft 365 E3'
-#         Id              = 12345
-#         OldQuantity     = 21
-#         NewQuantity     = ($Body | ConvertFrom-Json | Select-Object -ExpandProperty Quantity)
-#     }
-# } -ParameterFilter { $Uri -Eq 'subscriptions/12345' -And $method -Like "PUT" }
+Mock Invoke-CloudiQApiRequest {
+    return [PSCustomObject]@{
+        Name            = 'Microsoft 365 E3'
+        Id              = 12345
+        OldQuantity     = 21
+        NewQuantity     = ($Body | ConvertFrom-Json | Select-Object -ExpandProperty Quantity)
+    }
+} -ParameterFilter { $Body -and $Uri -Eq 'subscriptions/12345' -and $method -Like "PUT" }
