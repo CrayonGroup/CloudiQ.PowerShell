@@ -10,12 +10,15 @@
     Copyright         = 'The Cloud-iQ module is licensed under the GNU General Public License v3.0'
     Description       = 'Module to automate licensing through Crayon Cloud-iQ.'
     FunctionsToExport = @(
-        "Connect-CloudiQ"
+        'Connect-CloudiQ'
         # Organization
-        "Get-CloudiQOrganization"
+        'Get-CloudiQOrganization'
         # Subscription
-        "Get-CloudiQSubscription"
-        "Set-CloudiQSubscription"
+        'Get-CloudiQSubscription'
+        'Set-CloudiQSubscription'
+        # Subscription Addon
+        'Get-CloudiQSubscriptionAddon'
+        'Set-CloudiQSubscriptionAddon'
     )
     CmdletsToExport   = ''
     VariablesToExport = ''
@@ -26,6 +29,9 @@
         # Subscription
         'ciqgs'
         'ciqss'
+        # Subscription Addon
+        'ciqgsa'
+        'ciqssa'
     )
     PrivateData       = @{
         PSData = @{
