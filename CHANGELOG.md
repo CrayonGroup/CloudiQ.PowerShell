@@ -4,8 +4,9 @@
 
 ### New features
 - Added Get-CloudiQSubscriptionAddon (#6)
-- Added Set-CloudiQSubscriptionAddon (#6)
 - Added aliases for current available cmdlets (#8)
+- Issues working with SecureString, cross-platform (#9)
+- Define scope and visibility for sensitive variables (#10)
 
 ### Automation
 - GitHub Action, publishing new releases to the PowerShell Gallery (#2)
