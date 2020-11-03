@@ -30,10 +30,16 @@ Get-CloudiQSubscription
 
 ### EXAMPLE 2
 ```
-Get-CloudiQSubscription -OrganizationName Company
+Get-CloudiQSubscription -Name "*E1*"
+# Supports Wildcards
 ```
 
 ### EXAMPLE 3
+```
+Get-CloudiQSubscription -OrganizationName Company
+```
+
+### EXAMPLE 4
 ```
 Get-CloudiQSubscription -OrganizationId *******
 ```
