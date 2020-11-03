@@ -11,4 +11,7 @@
 ### Automation
 - GitHub Action, publishing new releases to the PowerShell Gallery (#2)
 
+### Miscellaneous fixes
+- Updated docs with new functions
+
 From alpha4, there will be a changelog item. In practice, it makes it easier to write changes as it's implemented and when creating a release you have the text ready to go. Prior to alpha4, keeping a changelog has not been a priority. For more info on the why and how, take a look at [keepachangelog.cm](https://keepachangelog.com/)

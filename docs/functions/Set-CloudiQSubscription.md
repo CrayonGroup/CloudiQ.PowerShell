@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -Add
-{{ Fill Add Description }}
+Add a number of subscriptions to the total subscription count
 
 ```yaml
 Type: Int32
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -Subtract
-{{ Fill Subtract Description }}
+Subtract a number of subscriptions to the total subscription count
 
 ```yaml
 Type: Int32
@@ -104,7 +104,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Requires an
 ## OUTPUTS
 
 ### Outputs a PSCustomObject.
