@@ -36,32 +36,28 @@ function Connect-CloudiQ {
     )
 
     if (Test-Path -Path 'Env:\CloudiQClientId') {
-        Set-Variable -Name ClientId -Value $Env:CloudiQClientId
-        Set-Variable -Name ClientSecret -Value $Env:CloudiQClientSecret
+        Set-Variable -Name ClientId -Value $Env:CloudiQClientId -Visibility Private
+        Set-Variable -Name ClientSecret -Value $Env:CloudiQClientSecret -Visibility Private
     }
     
     $apiBaseUrl = 'https://api.crayon.com/api/v1'
     
     $headers = @{}
-    # $encodedClientId = [System.Web.HttpUtility]::UrlEncode($clientId) 
-    # $encodedSecret = [System.Web.HttpUtility]::UrlEncode($clientSecret) 
-    # $credentials = "$($encodedClientId):$($encodedSecret)"
     $Bytes = [System.Text.Encoding]::UTF8.GetBytes($ClientId + ":" + $ClientSecret)
     $EncodedText =[Convert]::ToBase64String($Bytes)
     
     # Check if username and password is set as environment variables. If not, ask for username and password.
     if (Test-Path -Path 'Env:\CloudiQUsername') {
         Set-Variable -Name Username -Value $Env:CloudiQUsername
-        Set-Variable -Name Password -Value (Convertto-SecureString -String $Env:CloudiQPassword -AsPlainText)
+        Set-Variable -Name Password -Value $Env:CloudiQPassword -Visibility Private -Scope Private
     }
     else {
         $username = Read-Host -Prompt "Username"
         $password = Read-Host -Prompt "Password" -AsSecureString
+        # Converting from SecureString, the hard way due to limitations in Windows PowerShell
+        Set-Variable -Name BSTR -Value ([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password))  -Visibility Private -Scope Private
+        Set-Variable -Name Password -Value ([System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($BSTR))  -Visibility Private -Scope Private
     }
-
-    # Converting from SecureString, the hard way due to limitations in Windows PowerShell
-    $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
-    $password = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($BSTR)
     $Body = @{
         'username'= $username
         'password'= $password
