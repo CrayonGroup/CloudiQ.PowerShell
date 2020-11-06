@@ -2,7 +2,7 @@
 # Minimize overspending by removing subscriptions
 # that are not in use.
 
-. ServicePlanSku.ps1
+. ($PSScriptRoot + "\ServicePlanSku.ps1")
 
 $tenant = Get-AzureADTenantDetail | Select-Object -ExpandProperty ObjectId
 
