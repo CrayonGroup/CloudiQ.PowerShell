@@ -35,7 +35,7 @@
     )
     PrivateData       = @{
         PSData = @{
-            Prerelease   = 'alpha4'
+            Prerelease   = 'alpha5'
             Tags         = @("Crayon", "Cloud-iQ", "CloudiQ", "license")
             ProjectUri   = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell'
             ReleaseNotes = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell/releases'
