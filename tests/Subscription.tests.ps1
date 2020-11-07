@@ -27,7 +27,7 @@ Describe 'subscription tests' {
         It 'Should get the one subscription with ID of 12345' {
             $subscription = Get-CloudiQSubscription -SubscriptionId 12345
             $subscription.count | Should -Be 1
-            $subscription.Product | Should -Be 'Microsoft 365 E3'
+            $subscription.ProductName | Should -Be 'Microsoft 365 E3'
             $subscription.ProductId | Should -Be 67226
             $subscription.quantity | Should -Be 21
             $subscription.organization | Should -Be 'Demo Customer [T1/EUR]'

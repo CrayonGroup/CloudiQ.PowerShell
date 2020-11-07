@@ -7,7 +7,7 @@ BeforeAll {
 Describe "Get addons available to a specific subscription" {
 
     It 'Should result in a success, with one addon' {
-        $addon = Get-CloudiQSubscriptionAddon -SubscriptionId 12345 -Available
+        $addon = Get-CloudiQSubscriptionAddon -SubscriptionId 12345
 
         $addon.count | Should -Be 1
         $addon.id | Should -Be 414578

@@ -19,8 +19,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 E3'
-            Product      = @{Id = '67226' }
+            FriendlyName = 'Microsoft 365 E3'
+            Product      = @{
+                Id       = '67226'
+                ItemName = 'Microsoft 365 E3'
+            }
             Id           = '12345'
             Quantity     = '21'
             Organization = @{Name = 'Demo Customer [T1/EUR]' }
@@ -29,8 +32,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 E1'
-            Product      = @{Id = '67224' }
+            FriendlyName = 'Microsoft 365 E1'
+            Product      = @{
+                Id       = '67224'
+                ItemName = 'Microsoft 365 E1'
+            }
             Id           = '23456'
             Quantity     = '38'
             Organization = @{Name = 'Demo Customer [T1/EUR]' }
@@ -39,8 +45,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 F1'
-            Product      = @{Id = '67225' }
+            FriendlyName = 'Microsoft 365 F1'
+            Product      = @{
+                Id       = '67225'
+                ItemName = 'Microsoft 365 F1'
+            }
             Id           = '34567'
             Quantity     = '198'
             Organization = @{Name = 'Demo Customer [T1/EUR]' }
@@ -49,8 +58,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 E1'
-            Product      = @{Id = '67224' }
+            FriendlyName = 'Microsoft 365 E1'
+            Product      = @{
+                Id       = '67224'
+                ItemName = 'Microsoft 365 E1'
+            }
             Id           = '10010'
             Quantity     = '1948'
             Organization = @{Name = 'Demo Customer [T1/USD]' }
@@ -59,8 +71,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 F1'
-            Product      = @{Id = '67225' }
+            FriendlyName = 'Microsoft 365 F1'
+            Product      = @{
+                Id       = '67225'
+                ItemName = 'Microsoft 365 F1'
+            }
             Id           = '10011'
             Quantity     = '249'
             Organization = @{Name = 'Demo Customer [T1/USD]' }
@@ -72,8 +87,11 @@ Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Items = @{
             Publisher    = @{Name = "Microsoft" }
-            Name         = 'Microsoft 365 E3'
-            Product      = @{Id = '67226' }
+            FriendlyName = 'Microsoft 365 E3'
+            Product      = @{
+                Id       = '67226'
+                ItemName = 'Microsoft 365 E3'
+            }
             Id           = '12345'
             Quantity     = '21'
             Organization = @{Name = 'Demo Customer [T1/EUR]' }
@@ -84,8 +102,11 @@ Mock Invoke-CloudiQApiRequest {
 Mock Invoke-CloudiQApiRequest {
     [PSCustomObject]@{
         Publisher    = @{Name = "Microsoft" }
-        Name         = 'Microsoft 365 E3'
-        Product      = @{Id = '67226' }
+        FriendlyName = 'Microsoft 365 E3'
+        Product      = @{
+            Id       = '67226'
+            ItemName = 'Microsoft 365 E3'
+        }
         Id           = '12345'
         Quantity     = '21'
         Organization = @{Name = 'Demo Customer [T1/EUR]' }
@@ -94,9 +115,9 @@ Mock Invoke-CloudiQApiRequest {
 # Mock a spesific response for updating subscription count
 Mock Invoke-CloudiQApiRequest {
     return [PSCustomObject]@{
-        Name            = 'Microsoft 365 E3'
-        Id              = 12345
-        OldQuantity     = 21
-        NewQuantity     = ($Body | ConvertFrom-Json | Select-Object -ExpandProperty Quantity)
+        Name        = 'Microsoft 365 E3'
+        Id          = 12345
+        OldQuantity = 21
+        NewQuantity = ($Body | ConvertFrom-Json | Select-Object -ExpandProperty Quantity)
     }
 } -ParameterFilter { $Body -and $Uri -Eq 'subscriptions/12345' -and $method -Like "PUT" }

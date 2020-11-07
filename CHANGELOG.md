@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.0-alpha5
+
+### New features
+- Add ItemName to output of Get-CloudiQSubscription (#13)
+- Add subscription ID from the Cloud-iQ portal to the subscriptions shown through PowerShell (#14)
+
+### Miscellaneous fixes
+- Updated how Get-CloudiQSubscriptionAddon works, slightly
+- Fixed tests to work with the changes from #13
+- Started using mkdocs for the documentation site
+
+---
+
 ## v1.0.0-alpha4
 
 ### New features
