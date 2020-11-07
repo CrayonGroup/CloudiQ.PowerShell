@@ -8,6 +8,8 @@
 - Updated how Get-CloudiQSubscriptionAddon works, slightly
 - Fixed tests to work with the changes from #13
 
+---
+
 ## v1.0.0-alpha4
 
 ### New features
