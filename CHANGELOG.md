@@ -2,6 +2,7 @@
 
 ## v1.0.0-alpha5
 - Add ItemName to output of Get-CloudiQSubscription (#13)
+- Add subscription ID from the Cloud-iQ portal to the subscriptions shown through PowerShell (#14)
 
 ### Miscellaneous fixes
 - Updated how Get-CloudiQSubscriptionAddon works, slightly
