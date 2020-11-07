@@ -74,12 +74,13 @@ function Get-CloudiQSubscription {
 
     $result = $APICall | ForEach-Object {
         [PSCustomObject]@{
-            Publisher      = $_.publisher.name
-            Product        = $_.Name
-            ProductId      = $_.Product.Id
-            SubscriptionId = $_.Id
-            Quantity       = $_.Quantity
-            Organization   = $_.Organization.Name
+            Publisher       = $_.publisher.name
+            ProductName     = $_.Product.ItemName
+            FriendlyProduct = $_.Name
+            ProductId       = $_.Product.Id
+            SubscriptionId  = $_.Id
+            Quantity        = $_.Quantity
+            Organization    = $_.Organization.Name
         }
     }
     if ($Name) {
