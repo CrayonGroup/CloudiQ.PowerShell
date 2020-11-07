@@ -85,7 +85,7 @@ function Get-CloudiQSubscription {
         }
     }
     if ($Name) {
-        $result = $result | Where-Object -Property Product -like $Name
+        $result = $result | Where-Object -Property ProductName -like $Name
         # Send warning if there are no results
         if (!$result) {
             Write-Error ("No subscriptions found with that name. Are you sure you meant " + $Name + "?")
