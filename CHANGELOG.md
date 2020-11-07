@@ -1,9 +1,11 @@
 # Changelog
 
 ## v1.0.0-alpha5
+- Add ItemName to output of Get-CloudiQSubscription (#13)
 
 ### Miscellaneous fixes
 - Updated how Get-CloudiQSubscriptionAddon works, slightly
+- Fixed tests to work with the changes from #13
 
 ## v1.0.0-alpha4
 
