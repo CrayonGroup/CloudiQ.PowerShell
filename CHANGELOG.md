@@ -7,6 +7,7 @@
 ### Miscellaneous fixes
 - Updated how Get-CloudiQSubscriptionAddon works, slightly
 - Fixed tests to work with the changes from #13
+- Started using mkdocs for the documentation site
 
 ---
 
