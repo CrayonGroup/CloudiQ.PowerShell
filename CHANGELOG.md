@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.0-alpha5
+
+### Miscellaneous fixes
+- Updated how Get-CloudiQSubscriptionAddon works, slightly
+
 ## v1.0.0-alpha4
 
 ### New features
