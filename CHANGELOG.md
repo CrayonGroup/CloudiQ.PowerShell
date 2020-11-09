@@ -8,7 +8,7 @@
 ### Miscellaneous fixes
 - Added tests for `Connect-CloudiQ`
 
-From now on, the documentation is hosted in the branch gh-pages, which mkdocs automatically push to when using `mkdocs gh-deploy`. 
+From now on, the documentation is hosted in the branch gh-pages, which mkdocs automatically push to when using `mkdocs gh-deploy`.
 
 ## v1.0.0-alpha5
 
