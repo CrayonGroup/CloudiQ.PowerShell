@@ -6,7 +6,7 @@ function Invoke-CloudiQApiRequest {
         $Uri,
         [Parameter(Position = 1)]
         [string]
-        $Method = "Get",
+        $Method = "GET",
         [Parameter(Position = 2, ValueFromPipeline = $true)]
         $Body,
         [Parameter(Position = 3)]
