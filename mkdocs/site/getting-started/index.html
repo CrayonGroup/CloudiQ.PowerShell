@@ -5,27 +5,28 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
   
   
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Cloud-iQ PowerShell Module</title>
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Gettings started with the module - Cloud-iQ PowerShell Module</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Home";
-    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_name = "Gettings started with the module";
+    var mkdocs_page_input_path = "getting-started.md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/powershell.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
 </head>
@@ -38,32 +39,42 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> Cloud-iQ PowerShell Module</a>
+        <a href=".." class="icon icon-home"> Cloud-iQ PowerShell Module</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Cloud-iQ PowerShell module</a>
+                    </li>
+                </ul>
                 <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Gettings started with the module</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation-and-updating-the-module">Installation and updating the module</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#authenticate-and-connect">Authenticate and connect</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setting-credentials-for-automation">Setting credentials for automation</a>
+    </li>
     </ul>
                     </li>
                 </ul>
-                <p class="caption"><span class="caption-text">Functions</span></p>
+                <p class="caption"><span class="caption-text">Command reference</span></p>
                 <ul>
-                    <li class="toctree-l1"><a class="reference internal" href="functions/Connect-CloudiQ/">Connect-CloudiQ</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Connect-CloudiQ/">Connect-CloudiQ</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="functions/Get-CloudiQOrganization/">Get-CloudiQOrganization</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQOrganization/">Get-CloudiQOrganization</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="functions/Get-CloudiQSubscription/">Get-CloudiQSubscription</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQSubscription/">Get-CloudiQSubscription</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="functions/Get-CloudiQSubscriptionAddon/">Get-CloudiQSubscriptionAddon</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQSubscriptionAddon/">Get-CloudiQSubscriptionAddon</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="functions/Set-CloudiQSubscription/">Set-CloudiQSubscription</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Set-CloudiQSubscription/">Set-CloudiQSubscription</a>
                     </li>
                 </ul>
       </div>
@@ -75,7 +86,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">Cloud-iQ PowerShell Module</a>
+        <a href="..">Cloud-iQ PowerShell Module</a>
       </nav>
 
       
@@ -83,11 +94,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
     
-    <li>Home</li>
+    <li>Gettings started with the module</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -98,7 +109,8 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="installation-and-upgrading-the-module">Installation and upgrading the module</h2>
+                <h1 id="gettings-started-with-the-module">Gettings started with the module</h1>
+<h2 id="installation-and-updating-the-module">Installation and updating the module</h2>
 <p>The module is published on the PowerShell Gallery, which is a public repository for modules, scripts and DSC resources created and maintained by the PowerShell team. This means that it's very easy to install the module on any system that is able to connect to the internet.</p>
 <pre><code class="language-powershell"># Install the module
 Install-Module -Name CloudiQ
@@ -110,14 +122,15 @@ Import-Module -Name CloudiQ
 <p>To keep the module updated, you can use:</p>
 <pre><code class="language-powershell">Update-Module -Name CloudiQ
 </code></pre>
-<h2 id="authenticate-and-connect-to-cloud-iq">Authenticate and connect to Cloud-iQ</h2>
+<h2 id="authenticate-and-connect">Authenticate and connect</h2>
 <p>One you have the module installed and loaded, you can connect to Cloud-iQ by using the command <code>Connect-CloudiQ</code> with a client ID, client secret, as well as your username and password. To generate a client Id and secret, you need to go to the API management in Cloud-iQ and create a new client.</p>
-<p><img alt="" src="img/01-api-management-menu.png" /></p>
-<p><img alt="" src="img/02-api-management-client.png" /></p>
+<p><img alt="" src="../img/01-api-management-menu.png" /></p>
+<p><img alt="" src="../img/02-api-management-client.png" /></p>
 <p>Then run the cmdlet to connect your PowerShell session to CloudiQ.</p>
 <pre><code class="language-powershell">Connect-CloudiQ -ClientId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ClientSecret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 </code></pre>
 <p>You will be asked for your username and password after running Connect-CloudiQ.</p>
+<h2 id="setting-credentials-for-automation">Setting credentials for automation</h2>
 <p>You can set username, password, client ID and client secret as environment variables. The names of the environment variables need to be the following:</p>
 <ul>
 <li>CloudiQClientId</li>
@@ -125,7 +138,8 @@ Import-Module -Name CloudiQ
 <li>CloudiQUsername</li>
 <li>CloudiQPassword</li>
 </ul>
-<p>If you run your script through a pipeline, see the documentation for your selected product on how to set environment variables. If you are running this on a machine where you have access to PowerShell, you can set the environment variables by running the following:</p>
+<p>If you run your script through a pipeline, see the documentation for your selected product on how to set environment variables. If you are using the module on your local machine, you can set the environment variables the following way:</p>
+<p><strong>PowerShell</strong></p>
 <pre><code class="language-powershell"># Username and password
 New-Item -Path &quot;Env:\&quot; -Name 'CloudiQUsername' -Value 'username'
 New-Item -Path &quot;Env:\&quot; -Name 'CloudiQPassword' -Value 'password'
@@ -134,19 +148,15 @@ New-Item -Path &quot;Env:\&quot; -Name 'CloudiQPassword' -Value 'password'
 New-Item -Path &quot;Env:\&quot; -Name 'CloudiQClientId' -Value 'clientid'
 New-Item -Path &quot;Env:\&quot; -Name 'CloudiQSecret' -Value 'clientsecret'
 </code></pre>
-<h2 id="cmdlets">Cmdlets</h2>
-<ul>
-<li><a href="functions/Connect-CloudiQ/">Connect-CloudiQ</a></li>
-</ul>
-<h3 id="organization">Organization</h3>
-<ul>
-<li><a href="functions/Get-CloudiQOrganization/">Get-CloudiQOrganization</a></li>
-</ul>
-<h3 id="subscription">Subscription</h3>
-<ul>
-<li><a href="functions/Get-CloudiQSubscription/">Get-CloudiQSubscription</a></li>
-<li><a href="functions/Set-CloudiQSubscription/">Set-CloudiQSubscription</a></li>
-</ul>
+<p><strong>Bash</strong></p>
+<pre><code class="language-bash"># Username and password
+export CloudiQUsername='username'
+export CloudiQPassword='password'
+
+# Client ID and secret
+export CloudiQClientId='clientid'
+export CloudiQSecret='clientsecret'
+</code></pre>
               
             </div>
           </div>
@@ -154,8 +164,10 @@ New-Item -Path &quot;Env:\&quot; -Name 'CloudiQSecret' -Value 'clientsecret'
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="functions/Connect-CloudiQ/" class="btn btn-neutral float-right" title="Connect-CloudiQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../command-reference/Connect-CloudiQ/" class="btn btn-neutral float-right" title="Connect-CloudiQ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
+      
+        <a href=".." class="btn btn-neutral" title="Cloud-iQ PowerShell module"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -181,14 +193,16 @@ New-Item -Path &quot;Env:\&quot; -Name 'CloudiQSecret' -Value 'clientsecret'
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-        <span style="margin-left: 15px"><a href="functions/Connect-CloudiQ/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+        <span style="margin-left: 15px"><a href="../command-reference/Connect-CloudiQ/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
             SphinxRtdTheme.Navigation.enable(true);
@@ -197,8 +211,3 @@ New-Item -Path &quot;Env:\&quot; -Name 'CloudiQSecret' -Value 'clientsecret'
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2020-11-07 16:11:35.823969+00:00
--->
