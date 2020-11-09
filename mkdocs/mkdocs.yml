@@ -1,3 +1,7 @@
 site_name: Cloud-iQ PowerShell Module
 
-theme: readthedocs
+theme: 
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - powershell
