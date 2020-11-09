@@ -13,6 +13,9 @@
         'Connect-CloudiQ'
         # Organization
         'Get-CloudiQOrganization'
+        # Agreement
+        'Get-CloudiQAgreement'
+        # Needs clarification 'Get-CloudiQAgreementProduct'
         # Subscription
         'Get-CloudiQSubscription'
         'Set-CloudiQSubscription'
@@ -26,6 +29,9 @@
         'ciqc'
         # Organization
         'ciqgo'
+        # Agreement
+        'ciqa'
+        'ciqap'
         # Subscription
         'ciqgs'
         'ciqss'

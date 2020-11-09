@@ -17,9 +17,9 @@ function Connect-CloudiQ {
     Client Secret from the portal, created under API Management
 
     .INPUTS
+    
 
     .OUTPUTS
-
     No output, adds API token to your current session.
 
     .EXAMPLE
