@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.0.0
+
+
 ## v1.0.0-alpha6
 
 ### New Features
