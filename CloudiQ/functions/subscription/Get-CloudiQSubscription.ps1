@@ -4,7 +4,7 @@ function Get-CloudiQSubscription {
     Get all subscriptions.
 
     .DESCRIPTION
-    Get all subscriptions, from all organizations that the user has access to. It's possible to define the organization ID or name to narrow down the results.
+    Get all subscriptions, from all organizations that the user has access to. It's possible to define the organization name or ID, product name, the subscription id from the portal, and the unique subscription id to narrow down the results or find a specific subscription.
 
     .PARAMETER Name
     The name of the subscription.
