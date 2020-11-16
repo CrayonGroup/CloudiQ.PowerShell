@@ -18,6 +18,9 @@ function Get-CloudiQSubscription {
     .PARAMETER OrganizationName
     Name of the organization you want to see the current subscriptions for.
 
+    .PARAMETER PublisherSubscriptionId
+    The subscription Id from the portal.
+
     .INPUTS
     Can either use the parameters Name or OrganizationId, or pipe any number of OrganizationId to the cmdlet.
 
@@ -28,14 +31,17 @@ function Get-CloudiQSubscription {
     Get-CloudiQSubscription
 
     .EXAMPLE
-    Get-CloudiQSubscription -Name "*E1*"
     # Supports Wildcards
+    Get-CloudiQSubscription -Name "*E1*"
+
+    .EXAMPLE
+    Get-CloudiQSubscription -PublisherSubscriptionId "fb916799-90cb-4e8c-a796-301bf0765205"
 
     .EXAMPLE
     Get-CloudiQSubscription -OrganizationName Company
 
     .EXAMPLE
-    Get-CloudiQSubscription -OrganizationId *******
+    Get-CloudiQSubscription -OrganizationId 12345
 
     #>
     [CmdletBinding()]
