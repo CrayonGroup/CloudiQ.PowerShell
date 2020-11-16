@@ -44,16 +44,23 @@ Describe 'subscription tests' {
             { Get-CloudiQSubscription -Name "Bad name" -ErrorAction Stop } | Should -Throw
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
-    }
-}
-# TODO: Having issues with nested filters.
-# Context 'Set-CloudiQSubscription' {
-#     Describe 'set subscription tests' {
-#         It 'should add the subscription count by 1' {
-#             $subscription = Set-CloudiQSubscription -SubscriptionId 12345 -Add 1
 
-#             $subscription.oldQuantity | Should -Be 21
-#             $subscription.NewQuantity | Should -Be 22
-#         }
-#     }
-# }
+        It 'should get subscriptions based on PublisherSubscriptionId' {
+            $subscription = Get-CloudiQSubscription -PublisherSubscriptionId "ba4ee806-f061-4bec-ad40-eaa92ea79d78"
+            $subscription.count | Should -Be 1
+            $subscription.ProductName | Should -Be 'Microsoft 365 F1'
+            Should -Invoke 'Invoke-CloudiQApiRequest'
+        }
+    }
+    # TODO: Having issues with nested filters.
+    # Context 'Set-CloudiQSubscription' {
+    #     Describe 'set subscription tests' {
+    #         It 'should add the subscription count by 1' {
+    #             $subscription = Set-CloudiQSubscription -SubscriptionId 12345 -Add 1
+    
+    #             $subscription.oldQuantity | Should -Be 21
+    #             $subscription.NewQuantity | Should -Be 22
+    #         }
+    #     }
+    # }
+}
