@@ -68,6 +68,8 @@
                 <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../command-reference/Connect-CloudiQ/">Connect-CloudiQ</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQAgreement/">Get-CloudiQAgreement</a>
+                    </li>
                     <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQOrganization/">Get-CloudiQOrganization</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../command-reference/Get-CloudiQSubscription/">Get-CloudiQSubscription</a>
@@ -113,7 +115,7 @@
 <h2 id="installation-and-updating-the-module">Installation and updating the module</h2>
 <p>The module is published on the PowerShell Gallery, which is a public repository for modules, scripts and DSC resources created and maintained by the PowerShell team. This means that it's very easy to install the module on any system that is able to connect to the internet.</p>
 <pre><code class="language-powershell"># Install the module
-Install-Module -Name CloudiQ
+Install-Module -Name CloudiQ -AllowPrerelease
 
 # Import the module into your session
 Import-Module -Name CloudiQ
