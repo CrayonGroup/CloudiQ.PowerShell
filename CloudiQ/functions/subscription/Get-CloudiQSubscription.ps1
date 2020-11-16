@@ -60,7 +60,10 @@ function Get-CloudiQSubscription {
         $OrganizationId,
         [Parameter(Position = 4)]
         [string]
-        $PublisherSubscriptionId
+        $PublisherSubscriptionId,
+        [Parameter(Position = 5)]
+        [switch]
+        $Detailed
     )
 
     # Depending on how we want to access subscriptions, Invoke-CloudiQApiRequest appropriatly
@@ -81,16 +84,28 @@ function Get-CloudiQSubscription {
         $APICall = Invoke-CloudiQApiRequest -Uri "subscriptions" | Select-Object -ExpandProperty Items
     }
 
-    $result = $APICall | ForEach-Object {
-        [PSCustomObject]@{
-            SubscriptionId              = $_.Id
-            PublisherSubscriptionId     = $_.PublisherSubscriptionId
-            Publisher                   = $_.publisher.name
-            ProductName                 = $_.Product.ItemName
-            FriendlyName                = $_.Name
-            ProductId                   = $_.Product.Id
-            Quantity                    = $_.Quantity
-            Organization                = $_.Organization.Name
+    if ($Detailed -or $PublisherSubscriptionId) {
+        $result = $APICall | ForEach-Object {
+            [PSCustomObject]@{
+                SubscriptionId          = $_.Id
+                PublisherSubscriptionId = $_.PublisherSubscriptionId
+                Publisher               = $_.publisher.name
+                ProductName             = $_.Product.ItemName
+                FriendlyName            = $_.Name
+                ProductId               = $_.Product.Id
+                Quantity                = $_.Quantity
+                Organization            = $_.Organization.Name
+            }
+        }
+    }
+    else {
+        $result = $APICall | ForEach-Object {
+            [PSCustomObject]@{
+                Publisher      = $_.publisher.name
+                ProductName    = $_.Product.ItemName
+                SubscriptionId = $_.Id
+                Quantity       = $_.Quantity
+            }
         }
     }
 
