@@ -87,7 +87,7 @@ function Get-CloudiQSubscription {
             PublisherSubscriptionId     = $_.PublisherSubscriptionId
             Publisher                   = $_.publisher.name
             ProductName                 = $_.Product.ItemName
-            FriendlyProduct             = $_.Name
+            FriendlyName                = $_.Name
             ProductId                   = $_.Product.Id
             Quantity                    = $_.Quantity
             Organization                = $_.Organization.Name
