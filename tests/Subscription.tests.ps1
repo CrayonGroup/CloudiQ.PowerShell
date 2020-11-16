@@ -9,7 +9,6 @@ Describe 'subscription tests' {
         It 'Should result in all available subscriptions' {
             $subscriptions = Get-CloudiQSubscription
             $subscriptions.count | Should -Be 5
-            $subscriptions.organization | Select-Object -Unique | Sort-Object | Should -be 'Demo Customer [T1/EUR]', 'Demo Customer [T1/USD]'
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
     
@@ -28,9 +27,7 @@ Describe 'subscription tests' {
             $subscription = Get-CloudiQSubscription -SubscriptionId 12345
             $subscription.count | Should -Be 1
             $subscription.ProductName | Should -Be 'Microsoft 365 E3'
-            $subscription.ProductId | Should -Be 67226
             $subscription.quantity | Should -Be 21
-            $subscription.organization | Should -Be 'Demo Customer [T1/EUR]'
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
     
