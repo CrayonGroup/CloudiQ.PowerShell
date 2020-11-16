@@ -4,7 +4,7 @@ function Get-CloudiQSubscription {
     Get all subscriptions.
 
     .DESCRIPTION
-    Get all subscriptions, from all organizations that the user has access to. It's possible to define the organization ID or name to narrow down the results.
+    Get all subscriptions, from all organizations that the user has access to. It's possible to define the organization name or ID, product name, the subscription id from the portal, and the unique subscription id to narrow down the results or find a specific subscription.
 
     .PARAMETER Name
     The name of the subscription.
@@ -18,6 +18,9 @@ function Get-CloudiQSubscription {
     .PARAMETER OrganizationName
     Name of the organization you want to see the current subscriptions for.
 
+    .PARAMETER PublisherSubscriptionId
+    The subscription Id from the portal.
+
     .INPUTS
     Can either use the parameters Name or OrganizationId, or pipe any number of OrganizationId to the cmdlet.
 
@@ -28,14 +31,17 @@ function Get-CloudiQSubscription {
     Get-CloudiQSubscription
 
     .EXAMPLE
-    Get-CloudiQSubscription -Name "*E1*"
     # Supports Wildcards
+    Get-CloudiQSubscription -Name "*E1*"
+
+    .EXAMPLE
+    Get-CloudiQSubscription -PublisherSubscriptionId "fb916799-90cb-4e8c-a796-301bf0765205"
 
     .EXAMPLE
     Get-CloudiQSubscription -OrganizationName Company
 
     .EXAMPLE
-    Get-CloudiQSubscription -OrganizationId *******
+    Get-CloudiQSubscription -OrganizationId 12345
 
     #>
     [CmdletBinding()]
@@ -51,7 +57,13 @@ function Get-CloudiQSubscription {
         $OrganizationName,
         [Parameter(Position = 3)]
         [int]
-        $OrganizationId
+        $OrganizationId,
+        [Parameter(Position = 4)]
+        [string]
+        $PublisherSubscriptionId,
+        [Parameter(Position = 5)]
+        [switch]
+        $Detailed
     )
 
     # Depending on how we want to access subscriptions, Invoke-CloudiQApiRequest appropriatly
@@ -72,18 +84,31 @@ function Get-CloudiQSubscription {
         $APICall = Invoke-CloudiQApiRequest -Uri "subscriptions" | Select-Object -ExpandProperty Items
     }
 
-    $result = $APICall | ForEach-Object {
-        [PSCustomObject]@{
-            SubscriptionId              = $_.Id
-            PublisherSubscriptionId     = $_.PublisherSubscriptionId
-            Publisher                   = $_.publisher.name
-            ProductName                 = $_.Product.ItemName
-            FriendlyProduct             = $_.Name
-            ProductId                   = $_.Product.Id
-            Quantity                    = $_.Quantity
-            Organization                = $_.Organization.Name
+    if ($Detailed -or $PublisherSubscriptionId) {
+        $result = $APICall | ForEach-Object {
+            [PSCustomObject]@{
+                SubscriptionId          = $_.Id
+                PublisherSubscriptionId = $_.PublisherSubscriptionId
+                Publisher               = $_.publisher.name
+                ProductName             = $_.Product.ItemName
+                FriendlyName            = $_.Name
+                ProductId               = $_.Product.Id
+                Quantity                = $_.Quantity
+                Organization            = $_.Organization.Name
+            }
         }
     }
+    else {
+        $result = $APICall | ForEach-Object {
+            [PSCustomObject]@{
+                Publisher      = $_.publisher.name
+                ProductName    = $_.Product.ItemName
+                SubscriptionId = $_.Id
+                Quantity       = $_.Quantity
+            }
+        }
+    }
+
     if ($Name) {
         $result = $result | Where-Object -Property ProductName -like $Name
         # Send warning if there are no results
@@ -91,5 +116,13 @@ function Get-CloudiQSubscription {
             Write-Error ("No subscriptions found with that name. Are you sure you meant " + $Name + "?")
         }
     }
+    elseif ($PublisherSubscriptionId) {
+        $result = $result | Where-Object -Property PublisherSubscriptionId -like $PublisherSubscriptionId
+        # Send warning if there are no results
+        if (!$result) {
+            Write-Error ("No subscriptions found with that Subscription Id. Are you sure you meant " + $PublisherSubscriptionId + "?")
+        }
+    }
+
     return $result | Sort-Object -Property 'Product'
 }

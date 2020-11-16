@@ -9,7 +9,6 @@ Describe 'subscription tests' {
         It 'Should result in all available subscriptions' {
             $subscriptions = Get-CloudiQSubscription
             $subscriptions.count | Should -Be 5
-            $subscriptions.organization | Select-Object -Unique | Sort-Object | Should -be 'Demo Customer [T1/EUR]', 'Demo Customer [T1/USD]'
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
     
@@ -28,9 +27,7 @@ Describe 'subscription tests' {
             $subscription = Get-CloudiQSubscription -SubscriptionId 12345
             $subscription.count | Should -Be 1
             $subscription.ProductName | Should -Be 'Microsoft 365 E3'
-            $subscription.ProductId | Should -Be 67226
             $subscription.quantity | Should -Be 21
-            $subscription.organization | Should -Be 'Demo Customer [T1/EUR]'
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
     
@@ -44,16 +41,23 @@ Describe 'subscription tests' {
             { Get-CloudiQSubscription -Name "Bad name" -ErrorAction Stop } | Should -Throw
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
-    }
-}
-# TODO: Having issues with nested filters.
-# Context 'Set-CloudiQSubscription' {
-#     Describe 'set subscription tests' {
-#         It 'should add the subscription count by 1' {
-#             $subscription = Set-CloudiQSubscription -SubscriptionId 12345 -Add 1
 
-#             $subscription.oldQuantity | Should -Be 21
-#             $subscription.NewQuantity | Should -Be 22
-#         }
-#     }
-# }
+        It 'should get subscriptions based on PublisherSubscriptionId' {
+            $subscription = Get-CloudiQSubscription -PublisherSubscriptionId "ba4ee806-f061-4bec-ad40-eaa92ea79d78"
+            $subscription.count | Should -Be 1
+            $subscription.ProductName | Should -Be 'Microsoft 365 F1'
+            Should -Invoke 'Invoke-CloudiQApiRequest'
+        }
+    }
+    # TODO: Having issues with nested filters.
+    # Context 'Set-CloudiQSubscription' {
+    #     Describe 'set subscription tests' {
+    #         It 'should add the subscription count by 1' {
+    #             $subscription = Set-CloudiQSubscription -SubscriptionId 12345 -Add 1
+    
+    #             $subscription.oldQuantity | Should -Be 21
+    #             $subscription.NewQuantity | Should -Be 22
+    #         }
+    #     }
+    # }
+}
