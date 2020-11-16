@@ -51,7 +51,10 @@ function Get-CloudiQSubscription {
         $OrganizationName,
         [Parameter(Position = 3)]
         [int]
-        $OrganizationId
+        $OrganizationId,
+        [Parameter(Position = 4)]
+        [string]
+        $PublisherSubscriptionId
     )
 
     # Depending on how we want to access subscriptions, Invoke-CloudiQApiRequest appropriatly
@@ -84,6 +87,7 @@ function Get-CloudiQSubscription {
             Organization                = $_.Organization.Name
         }
     }
+
     if ($Name) {
         $result = $result | Where-Object -Property ProductName -like $Name
         # Send warning if there are no results
@@ -91,5 +95,13 @@ function Get-CloudiQSubscription {
             Write-Error ("No subscriptions found with that name. Are you sure you meant " + $Name + "?")
         }
     }
+    elseif ($PublisherSubscriptionId) {
+        $result = $result | Where-Object -Property PublisherSubscriptionId -like $PublisherSubscriptionId
+        # Send warning if there are no results
+        if (!$result) {
+            Write-Error ("No subscriptions found with that Subscription Id. Are you sure you meant " + $PublisherSubscriptionId + "?")
+        }
+    }
+
     return $result | Sort-Object -Property 'Product'
 }
