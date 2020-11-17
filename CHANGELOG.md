@@ -2,6 +2,10 @@
 
 ## v1.0.0
 
+## v1.0.0-alpha7
+
+- Add PublisherSubscriptionId parameter to filter subscription (#21)
+- Added default view with few details, and a detailed switch (3ddf072ca38823d0866c46580fd894887fe8e8d4)
 
 ## v1.0.0-alpha6
 

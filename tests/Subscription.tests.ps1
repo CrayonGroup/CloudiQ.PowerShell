@@ -48,6 +48,11 @@ Describe 'subscription tests' {
             $subscription.ProductName | Should -Be 'Microsoft 365 F1'
             Should -Invoke 'Invoke-CloudiQApiRequest'
         }
+
+        It 'should fail to get subscriptions based on PublisherSubscriptionId' {
+            { Get-CloudiQSubscription -PublisherSubscriptionId "really-bad-guid" -ErrorAction Stop } | Should -Throw
+            Should -Invoke 'Invoke-CloudiQApiRequest'
+        }
     }
     # TODO: Having issues with nested filters.
     # Context 'Set-CloudiQSubscription' {

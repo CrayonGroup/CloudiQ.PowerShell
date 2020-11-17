@@ -6,7 +6,7 @@ The module is published on the PowerShell Gallery, which is a public repository 
 
 ```powershell
 # Install the module
-Install-Module -Name CloudiQ
+Install-Module -Name CloudiQ -AllowPrerelease
 
 # Import the module into your session
 Import-Module -Name CloudiQ

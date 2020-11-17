@@ -14,12 +14,12 @@ Get all subscriptions.
 
 ```
 Get-CloudiQSubscription [[-Name] <String>] [[-SubscriptionId] <String>] [[-OrganizationName] <String>]
- [[-OrganizationId] <Int32>] [<CommonParameters>]
+ [[-OrganizationId] <Int32>] [[-PublisherSubscriptionId] <String>] [-Detailed] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Get all subscriptions, from all organizations that the user has access to.
-It's possible to define the organization ID or name to narrow down the results.
+It's possible to define the organization name or ID, product name, the subscription id from the portal, and the unique subscription id to narrow down the results or find a specific subscription.
 
 ## EXAMPLES
 
@@ -30,18 +30,23 @@ Get-CloudiQSubscription
 
 ### EXAMPLE 2
 ```
-Get-CloudiQSubscription -Name "*E1*"
 # Supports Wildcards
+Get-CloudiQSubscription -Name "*E1*"
 ```
 
 ### EXAMPLE 3
 ```
-Get-CloudiQSubscription -OrganizationName Company
+Get-CloudiQSubscription -PublisherSubscriptionId "fb916799-90cb-4e8c-a796-301bf0765205"
 ```
 
 ### EXAMPLE 4
 ```
-Get-CloudiQSubscription -OrganizationId *******
+Get-CloudiQSubscription -OrganizationName Company
+```
+
+### EXAMPLE 5
+```
+Get-CloudiQSubscription -OrganizationId 12345
 ```
 
 ## PARAMETERS
@@ -102,6 +107,36 @@ Aliases:
 Required: False
 Position: 4
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublisherSubscriptionId
+The subscription Id from the portal.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Detailed
+{{ Fill Detailed Description }}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

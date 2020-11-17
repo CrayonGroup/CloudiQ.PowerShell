@@ -11,4 +11,5 @@ Mock -CommandName Invoke-RestMethod -Verifiable -MockWith {
         StatusCode  = 200
         AccessToken = 'AccessToken'
     }
+    throw "Authorization header missing"
 }
