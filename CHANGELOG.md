@@ -2,6 +2,9 @@
 
 ## v1.0.0
 
+- Set-CloudiQSubscription: Error 400 bad request (#24)
+- Add Verbose and Debug for functions (#25)
+
 ## v1.0.0-alpha7
 
 - Add PublisherSubscriptionId parameter to filter subscription (#21)

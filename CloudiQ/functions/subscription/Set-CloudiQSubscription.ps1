@@ -47,18 +47,23 @@ function Set-CloudiQSubscription {
         [int]
         $Quantity
     )
+    Write-Verbose -Message "Fetching subscription."
     $subscription = Invoke-CloudiQApiRequest -Uri ("subscriptions/$SubscriptionId")
 
-    $originalQuantity = $subscription.quantity
+    [int]$originalQuantity = $subscription.quantity
+    Write-Debug -Message "Setting original quantity to $originalQuantity."
     
     if ($Add) {
-        $subscription.quantity += $Add
+        Write-Debug -Message "Adding $Add to quantity."
+        [int]$subscription.quantity += $Add
     }
     elseif ($Subtract) {
-        $subscription.quantity -= $Subtract
+        Write-Debug -Message "Subtracting $Subtract to quantity."
+        [int]$subscription.quantity -= $Subtract
     }
     else {
-        $subscription.quantity = $Quantity
+        Write-Debug -Message "Setting the quantity to $Quantity."
+        [int]$subscription.quantity = $Quantity
     }
 
     $callParam = @{
@@ -66,6 +71,7 @@ function Set-CloudiQSubscription {
         Method  = 'PUT'
         Body    = ($subscription)
     }
+    Write-Verbose -Message "Sending PUT to API"
     $APICall = Invoke-CloudiQApiRequest @callParam
 
     [PSCustomObject]@{
