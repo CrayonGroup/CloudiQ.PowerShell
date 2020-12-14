@@ -68,6 +68,7 @@ function Get-CloudiQSubscription {
 
     # Depending on how we want to access subscriptions, Invoke-CloudiQApiRequest appropriatly
     if ($OrganizationName) {
+        Write-Debug -Message "Parameter OrganizationName used to get subscriptions."
         try {
             $OrganizationId = Get-CloudiQOrganization -Name $OrganizationName -ErrorAction Stop | Select-object -ExpandProperty Id
         }
@@ -78,9 +79,11 @@ function Get-CloudiQSubscription {
         $APICall = Invoke-CloudiQApiRequest -Uri "subscriptions/?organizationID=$OrganizationId" | Select-Object -ExpandProperty Items
     }
     elseif ($SubscriptionId) {
+        Write-Debug -Message "Parameter SubscriptionId used to get a specific subscription."
         $APICall = Invoke-CloudiQApiRequest -Uri ("subscriptions/" + $SubscriptionId)
     }
     else {
+        Write-Debug -Message "No parameter used to filter results, show all subscriptions available."
         $APICall = Invoke-CloudiQApiRequest -Uri "subscriptions" | Select-Object -ExpandProperty Items
     }
 
@@ -110,6 +113,8 @@ function Get-CloudiQSubscription {
     }
 
     if ($Name) {
+        Write-Verbose -Message "If the Name parameter is used, filter the results based on that name."
+        Write-Debug -Message "Value in Name parameter is set to $Name"
         $result = $result | Where-Object -Property ProductName -like $Name
         # Send warning if there are no results
         if (!$result) {
@@ -123,6 +128,6 @@ function Get-CloudiQSubscription {
             Write-Error ("No subscriptions found with that Subscription Id. Are you sure you meant " + $PublisherSubscriptionId + "?")
         }
     }
-
-    return $result | Sort-Object -Property 'Product'
+    Write-Verbose -Message "Returning results, sorted by product name."
+    return $result | Sort-Object -Property 'ProductName'
 }

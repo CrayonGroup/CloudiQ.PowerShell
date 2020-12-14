@@ -2,8 +2,13 @@
 
 ## v1.0.0
 
+## Closed issues
 - Set-CloudiQSubscription: Error 400 bad request (#24)
 - Add Verbose and Debug for functions (#25)
+
+## Miscellaneous fixes
+- Refactoring Connect-CloudiQ, improvements and optimalization
+- Update help comments for Get-CloudiQAgreement
 
 ## v1.0.0-alpha7
 

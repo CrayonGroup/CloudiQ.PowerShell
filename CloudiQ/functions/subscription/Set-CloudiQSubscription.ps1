@@ -47,7 +47,7 @@ function Set-CloudiQSubscription {
         [int]
         $Quantity
     )
-    Write-Verbose -Message "Fetching subscription."
+    Write-Verbose -Message "Fetching subscription as object."
     $subscription = Invoke-CloudiQApiRequest -Uri ("subscriptions/$SubscriptionId")
 
     [int]$originalQuantity = $subscription.quantity
@@ -71,7 +71,7 @@ function Set-CloudiQSubscription {
         Method  = 'PUT'
         Body    = ($subscription)
     }
-    Write-Verbose -Message "Sending PUT to API"
+    Write-Verbose -Message "Sending altered object to API."
     $APICall = Invoke-CloudiQApiRequest @callParam
 
     [PSCustomObject]@{
