@@ -18,7 +18,7 @@ function Invoke-CloudiQApiRequest {
         $restSplat = @{
             Uri         = "https://apiv1.crayon.com/api/v1/$Uri"
             Method      = $Method
-            #ContentType = 'application/json'
+            ContentType = 'application/json'
             Headers     = @{
                 'Accept'        = 'application/json'
                 'Authorization' = "Bearer $CloudIqAccessToken"
