@@ -18,6 +18,7 @@ function Get-CloudiQSubscriptionAddon {
     Outputs a PSCustomObject.
 
     .EXAMPLE
+    Get-CloudiQSubscriptionAddon -SubscriptionId 12345
     #>
 
     [CmdletBinding()]
@@ -31,16 +32,24 @@ function Get-CloudiQSubscriptionAddon {
         Uri = ("subscriptions/$SubscriptionId/addon-offers")
     }
 
+    Write-Debug -Message "Calling API with for subscription $SubscriptionId"
     $APICall = Invoke-CloudiQApiRequest @callParam |
     Select-Object -ExpandProperty Items
 
-    $APICall | ForEach-Object {
-        [PSCustomObject]@{
-            Name               = $_.Product.ItemName
-            Id                 = $_.Product.Id
-            Publisher          = $_.Publisher.Name
-            PartNumber         = $_.Product.PartNumber
-            PublisherProductId = $_.Product.PublisherProductId
+    switch ($APICall) {
+        $null {
+            Write-Information -MessageData "No addons found for subscription $SubscriptionId"
+        }
+        Default {
+            $APICall | ForEach-Object {
+                [PSCustomObject]@{
+                    Name               = $_.Product.ItemName
+                    Id                 = $_.Product.Id
+                    Publisher          = $_.Publisher.Name
+                    PartNumber         = $_.Product.PartNumber
+                    PublisherProductId = $_.Product.PublisherProductId
+                }
+            }
         }
     }
 }

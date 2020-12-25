@@ -2,6 +2,16 @@
 
 ## v1.0.0
 
+## Closed issues
+- Set-CloudiQSubscription: Error 400 bad request (#24)
+- Add Verbose and Debug for functions (#25)
+- Add user management (#26)
+
+## Miscellaneous fixes
+- Refactoring Connect-CloudiQ, improvements and optimalization
+- Update help comments for Get-CloudiQAgreement
+- Write tests for user management (#26)
+
 ## v1.0.0-alpha7
 
 - Add PublisherSubscriptionId parameter to filter subscription (#21)

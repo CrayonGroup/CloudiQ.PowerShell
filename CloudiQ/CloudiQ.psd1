@@ -22,6 +22,12 @@
         # Subscription Addon
         'Get-CloudiQSubscriptionAddon'
         'Set-CloudiQSubscriptionAddon'
+        # User management
+        'Get-CloudiQUser'
+        'New-CloudiQUser'
+        'Set-CloudiQUser'
+        'Remove-CloudiQUser'
+        'Set-CloudiQUserPassword'
     )
     CmdletsToExport   = ''
     VariablesToExport = ''
@@ -38,10 +44,15 @@
         # Subscription Addon
         'ciqgsa'
         'ciqssa'
+        # User management
+        'ciqgu'
+        'ciqnu'
+        'ciqsu'
+        'ciqru'
+        'ciqsup'
     )
     PrivateData       = @{
         PSData = @{
-            Prerelease   = 'alpha7'
             Tags         = @("Crayon", "Cloud-iQ", "CloudiQ", "license")
             ProjectUri   = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell'
             ReleaseNotes = 'https://github.com/CrayonGroup/Crayon.Cloud-iQ.PowerShell/releases'
