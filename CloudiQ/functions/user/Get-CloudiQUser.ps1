@@ -26,6 +26,9 @@ function Get-CloudiQUser {
 
     .EXAMPLE
     Get-CloudiQUser
+
+    .EXAMPLE
+    Get-CloudiQUser -Username user.name@cloudiq.crayon.com
     #>
     [CmdletBinding(DefaultParameterSetName = 'allUsers')]
     param (
@@ -46,25 +49,27 @@ function Get-CloudiQUser {
     )
 
     if ($Username) {
-        Write-Verbose -Message "Finding the user with the username of " + $username.ToLower()
+        Write-Verbose -Message ("Finding the user with the username of " + $username.ToLower())
         $callParam = @{
             Uri = "users/user/?userName=$Username"
         }
+        $APICall = Invoke-CloudiQApiRequest @callParam
     }
     elseif ($Id) {
         Write-Verbose -Message "Finding the user with an Id of $Id"
         $callParam = @{
             Uri = "users/?userId=$Id"
         }
+        $APICall = Invoke-CloudiQApiRequest @callParam
     } 
     else {
         Write-Verbose -Message ("Finding all users with the " + $role.ToLower() + " role")
         $callParam = @{
             Uri = "users/?role=$role"
         }
+        $APICall = Invoke-CloudiQApiRequest @callParam | Select-Object -ExpandProperty Items
     }
 
-    $APICall = Invoke-CloudiQApiRequest @callParam | Select-Object -ExpandProperty Items
     switch ($Detailed) {
         $true { $APICall }
         $false {
