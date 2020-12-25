@@ -25,7 +25,7 @@ In the future, it will return a collection of subscription addon offers that are
 
 ### EXAMPLE 1
 ```
-
+Get-CloudiQSubscriptionAddon -SubscriptionId 12345
 ```
 
 ## PARAMETERS

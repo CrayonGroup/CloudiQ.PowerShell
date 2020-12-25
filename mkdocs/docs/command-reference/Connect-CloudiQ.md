@@ -63,6 +63,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Client ID and Secret, as well as username and password.
 ## OUTPUTS
 
 ### No output, adds API token to your current session.

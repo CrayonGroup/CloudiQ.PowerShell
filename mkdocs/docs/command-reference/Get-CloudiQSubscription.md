@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -Detailed
-{{ Fill Detailed Description }}
+Shows a more detailed view than the default one.
 
 ```yaml
 Type: SwitchParameter
