@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Set-CloudiQSubscription - Cloud-iQ PowerShell Module</title>
+  <title>Get-CloudiQUser - Cloud-iQ PowerShell Module</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Set-CloudiQSubscription";
-    var mkdocs_page_input_path = "command-reference\\Set-CloudiQSubscription.md";
+    var mkdocs_page_name = "Get-CloudiQUser";
+    var mkdocs_page_input_path = "command-reference\\Get-CloudiQUser.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -68,13 +68,19 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Get-CloudiQSubscriptionAddon/">Get-CloudiQSubscriptionAddon</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../Get-CloudiQUser/">Get-CloudiQUser</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Set-CloudiQSubscription</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Get-CloudiQUser</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#synopsis">SYNOPSIS</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#syntax">SYNTAX</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#allusers-default">allUsers (Default)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#username">Username</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#id">Id</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#description">DESCRIPTION</a>
     </li>
@@ -84,25 +90,27 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#example-2">EXAMPLE 2</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#example-3">EXAMPLE 3</a>
-    </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#parameters">PARAMETERS</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#-subscriptionid">-SubscriptionId</a>
+    <li class="toctree-l3"><a class="reference internal" href="#-username">-Username</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#-add">-Add</a>
+    <li class="toctree-l3"><a class="reference internal" href="#-id">-Id</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#-subtract">-Subtract</a>
+    <li class="toctree-l3"><a class="reference internal" href="#-role">-role</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#-quantity">-Quantity</a>
+    <li class="toctree-l3"><a class="reference internal" href="#-detailed">-Detailed</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#commonparameters">CommonParameters</a>
     </li>
         </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#inputs">INPUTS</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#none-for-all-users-either-id-or-username-to-filter-out-users">None, for all users. Either Id or Username to filter out users.</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#outputs">OUTPUTS</a>
         <ul>
@@ -115,6 +123,8 @@
     <li class="toctree-l2"><a class="reference internal" href="#related-links">RELATED LINKS</a>
     </li>
     </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../Set-CloudiQSubscription/">Set-CloudiQSubscription</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../Set-CloudiQUser/">Set-CloudiQUser</a>
                     </li>
@@ -144,7 +154,7 @@
         
       
     
-    <li>Set-CloudiQSubscription</li>
+    <li>Get-CloudiQUser</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -155,77 +165,82 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="set-cloudiqsubscription">Set-CloudiQSubscription</h1>
+                <h1 id="get-cloudiquser">Get-CloudiQUser</h1>
 <h2 id="synopsis">SYNOPSIS</h2>
-<p>Update a subscription based on Subscription ID.</p>
+<p>Get Cloud-iQ users.</p>
 <h2 id="syntax">SYNTAX</h2>
-<pre><code>Set-CloudiQSubscription [-SubscriptionId] &lt;String&gt; [[-Add] &lt;Int32&gt;] [[-Subtract] &lt;Int32&gt;] [[-Quantity] &lt;Int32&gt;]
- [&lt;CommonParameters&gt;]
+<h3 id="allusers-default">allUsers (Default)</h3>
+<pre><code>Get-CloudiQUser [-role &lt;String&gt;] [-Detailed] [&lt;CommonParameters&gt;]
+</code></pre>
+<h3 id="username">Username</h3>
+<pre><code>Get-CloudiQUser [[-Username] &lt;String&gt;] [-Detailed] [&lt;CommonParameters&gt;]
+</code></pre>
+<h3 id="id">Id</h3>
+<pre><code>Get-CloudiQUser [[-Id] &lt;String&gt;] [-Detailed] [&lt;CommonParameters&gt;]
 </code></pre>
 <h2 id="description">DESCRIPTION</h2>
-<p>Update the friendly name, quantity, invoice profile, status and tags of a subscription.</p>
+<p>Get all, or a specific user from Cloud-iQ.</p>
 <h2 id="examples">EXAMPLES</h2>
 <h3 id="example-1">EXAMPLE 1</h3>
-<pre><code>Set-CloudiQSubscription -SubscriptionId 00000 -Add 1
+<pre><code>Get-CloudiQUser
 </code></pre>
 <h3 id="example-2">EXAMPLE 2</h3>
-<pre><code>Set-CloudiQSubscription -SubscriptionId 00000 -Subtract 2
-</code></pre>
-<h3 id="example-3">EXAMPLE 3</h3>
-<pre><code>Set-CloudiQSubscription -SubscriptionId 00000 -Quantity 3
+<pre><code>Get-CloudiQUser -Username user.name@cloudiq.crayon.com
 </code></pre>
 <h2 id="parameters">PARAMETERS</h2>
-<h3 id="-subscriptionid">-SubscriptionId</h3>
-<p>Organization Id, to limit the subscriptions to certain organizations.</p>
+<h3 id="-username">-Username</h3>
+<p>The username of a particular user.</p>
 <pre><code class="language-yaml">Type: String
-Parameter Sets: (All)
+Parameter Sets: Username
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-add">-Add</h3>
-<p>Add a number of subscriptions to the total subscription count</p>
-<pre><code class="language-yaml">Type: Int32
-Parameter Sets: (All)
+<h3 id="-id">-Id</h3>
+<p>The GUID of a particular user.</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: Id
 Aliases:
 
 Required: False
 Position: 2
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
-<h3 id="-subtract">-Subtract</h3>
-<p>Subtract a number of subscriptions to the total subscription count</p>
-<pre><code class="language-yaml">Type: Int32
+<h3 id="-role">-role</h3>
+<p>Used to filter out users based on role.
+Alternatives are admin or user, and defaults to "none" which shows all users.</p>
+<pre><code class="language-yaml">Type: String
+Parameter Sets: allUsers
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+</code></pre>
+<h3 id="-detailed">-Detailed</h3>
+<p>Shows a more detailed view than the default one.</p>
+<pre><code class="language-yaml">Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-</code></pre>
-<h3 id="-quantity">-Quantity</h3>
-<p>{{ Fill Quantity Description }}</p>
-<pre><code class="language-yaml">Type: Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: 0
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 </code></pre>
 <h3 id="commonparameters">CommonParameters</h3>
 <p>This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see <a href="http://go.microsoft.com/fwlink/?LinkID=113216">about_CommonParameters</a>.</p>
 <h2 id="inputs">INPUTS</h2>
+<h3 id="none-for-all-users-either-id-or-username-to-filter-out-users">None, for all users. Either Id or Username to filter out users.</h3>
 <h2 id="outputs">OUTPUTS</h2>
 <h3 id="outputs-a-pscustomobject">Outputs a PSCustomObject.</h3>
 <h2 id="notes">NOTES</h2>
@@ -237,10 +252,10 @@ Accept wildcard characters: False
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Set-CloudiQUser/" class="btn btn-neutral float-right" title="Set-CloudiQUser">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Set-CloudiQSubscription/" class="btn btn-neutral float-right" title="Set-CloudiQSubscription">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../Get-CloudiQUser/" class="btn btn-neutral" title="Get-CloudiQUser"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Get-CloudiQSubscriptionAddon/" class="btn btn-neutral" title="Get-CloudiQSubscriptionAddon"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -266,10 +281,10 @@ Accept wildcard characters: False
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../Get-CloudiQUser/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../Get-CloudiQSubscriptionAddon/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../Set-CloudiQUser/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../Set-CloudiQSubscription/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
