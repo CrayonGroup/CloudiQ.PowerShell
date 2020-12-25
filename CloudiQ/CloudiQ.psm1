@@ -15,12 +15,17 @@ foreach ($function in $functionTypes) {
 }
 
 New-Alias -Name 'ciqc' -Value 'Connect-CloudiQ' -Description 'Connect to Cloud-iQ'
+# Organization
 New-Alias -Name 'ciqgo' -Value 'Get-CloudiQOrganization' -Description 'Get organizations'
+# Agreement
 New-Alias -Name 'ciqa' -Value 'Get-CloudiQAgreement' -Description 'Get agreements'
 New-Alias -Name 'ciqap' -Value 'Get-CloudiQAgreementProduct' -Description 'Get agreement products'
+# Subscription
 New-Alias -Name 'ciqgs' -Value 'Get-CloudiQSubscription' -Description 'Get subscriptions'
 New-Alias -Name 'ciqss' -Value 'Set-CloudiQSubscription' -Description 'Update subscription'
-
+# Subscription Addon
+New-Alias -Name 'ciqgsa' -Value 'Get-CloudiQSubscriptionAddon'
+New-Alias -Name 'ciqssa' -Value 'Set-CloudiQSubscriptionAddon'
 # User management
 New-Alias -Name 'ciqgu' -Value 'Get-CloudiQUser' -Description 'Get Cloud-iQ users'
 New-Alias -Name 'ciqnu' -Value 'New-CloudiQUser' -Description 'Create a new Cloud-iQ user'
