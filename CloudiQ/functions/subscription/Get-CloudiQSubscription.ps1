@@ -21,6 +21,9 @@ function Get-CloudiQSubscription {
     .PARAMETER PublisherSubscriptionId
     The subscription Id from the portal.
 
+    .PARAMETER Detailed
+    Shows a more detailed view than the default one.
+
     .INPUTS
     Can either use the parameters Name or OrganizationId, or pipe any number of OrganizationId to the cmdlet.
 
