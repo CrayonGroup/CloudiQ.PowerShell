@@ -21,10 +21,10 @@ function Set-CloudiQUser {
     param (
         [Parameter(Position = 0)]
         [string]
-        $Username,
+        $Id,
         [Parameter(Position = 1)]
         [string]
-        $Id,
+        $Username,
         [Parameter(Position = 2)]
         [string]
         $Firstname,
@@ -45,7 +45,10 @@ function Set-CloudiQUser {
         $LockoutEnd,
         [Parameter(Position = 8)]
         [switch]
-        $TenantAdmin
+        $TenantAdmin,
+        [Parameter(Position = 9)]
+        [switch]
+        $NewUsername
     )
 
     $userObject = Get-CloudiQUser -Id $Id
@@ -66,6 +69,10 @@ function Set-CloudiQUser {
     If ($Email) {
         Write-Verbose -Message 'Changing Email'
         $userObject.Email = $Email
+    }
+    If ($NewUsername) {
+        Write-Verbose -Message 'Changing username'
+        $userObject.Username = $NewUsername
     }
     If ($PhoneNumber) {
         Write-Verbose -Message 'Changing phonenumber'
