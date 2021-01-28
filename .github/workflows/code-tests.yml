@@ -1,4 +1,4 @@
-name: Pester
+name: 'Code Tests'
 on:
   push:
     branches: [ master ]
