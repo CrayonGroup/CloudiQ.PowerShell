@@ -16,7 +16,7 @@ function Invoke-CloudiQApiRequest {
     try {
         Write-Verbose -Message "Calling Cloud-iQ API"
         $restSplat = @{
-            Uri         = "https://apiv1.crayon.com/api/v1/$Uri"
+            Uri         = "https://api.crayon.com/api/v1/$Uri"
             Method      = $Method
             ContentType = 'application/json'
             Headers     = @{
